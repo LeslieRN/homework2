@@ -34,17 +34,21 @@ int main()
     int var = quantity_of_students(file); //, check;
     printf("This is quantity of the text %d\n", var);
     temp = show_file_data(file);
+    //printf("%s\n", temp);
+    //printf("This is quantity of the text %d\n", var);
+    original = (char *)malloc(sizeof(char) * (var + 100));
     original = loopThrough(temp);
     printf("%s\n", original);
     total_words = quantity_of_words(original);
     printf("This is the quantity of words: %d\n", total_words);
     total_lines = quantity_of_lines(original);
-    printf("This is the quantity of lines: %d\n", total_words);
+    printf("This is the quantity of lines: %d\n", total_lines);
     highest_word = highest_strlen_word(original);
     printf("This is the highest word: %s\n", highest_word);
     lowest_word = lower_strlen_word(original);
     //printf("This is the lowest word: %s\n", lowest_word);
-    //most_frequent_word = most_frequenty_word(original);
+    most_frequent_word = most_frequenty_word(original);
+    printf("This is the most frequent word: %s\n", most_frequent_word);
 
     return 0;
 }

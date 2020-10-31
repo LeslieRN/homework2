@@ -89,17 +89,17 @@ char *loopThrough(char *main_pointer)
 {
     int counter = -1, check = 0;
     char *original, *temp, *puntuation, *before, *title;
-    original = (char *)malloc(sizeof(char) * strlen(main_pointer) + 20);
+    original = (char *)malloc(sizeof(char) * strlen(main_pointer) + 100);
     //printf("This is loop \n");
-    printf("Main %s\n", main_pointer);
-    fflush(stdin);
+    //printf("%s\n", main_pointer);
+    //fflush(stdin);
     temp = strtok(main_pointer, "\n"); //locates in the first space Hello , it's me
     //printf("This is temp %sokay\n", temp);
-    fflush(stdin);
-    printf("Temp before de if statements%s\n", temp);
+    //fflush(stdin);
+    //printf("Temp before de if statements%s\n", temp);
     while (temp)
     {
-        printf("%s\n", temp);
+        //printf("%s\n", temp);
         puntuation = (char *)malloc(sizeof(char) * strlen(temp) + 1);
         strcpy(puntuation, temp);
         if (temp)
@@ -107,16 +107,15 @@ char *loopThrough(char *main_pointer)
             //set spaces at the beginging
             //add the function to check for the first condition;
 
-            printf("This is punctiation %s", puntuation);
+            //printf("This is punctiation %s", puntuation);
             if (counter == -1)
             {
-
-                printf("This is punctiation %s", puntuation);
+                //printf("This is punctiation %s", puntuation);
                 puntuation = changeUpper(puntuation);
-                printf("This is punctiation %s", puntuation);
+                //printf("This is punctiation %s", puntuation);
                 strcpy(original, puntuation);
                 strcat(original, "\n");
-                printf("This is original in counter -1%s\n", original);
+                printf("This is original in counter -1 %s\n", original);
                 counter = 0;
             }
             else if (counter == 0)
@@ -129,40 +128,40 @@ char *loopThrough(char *main_pointer)
             }
             else if (counter > 0)
             {
-                printf("Jesus take the wheel\n");
+                //printf("Jesus take the wheel\n");
                 //printf("This is the value of temp -1 %c\n", temp - 1);
                 //strcpy(puntuation, temp);
-                printf("Jesus take the wheel\n");
+                //printf("Jesus take the wheel\n");
                 if (*(puntuation + 0) == ',') //|| strchr(temp, ';') != NULL)
                 {
-                    printf("Hey im0 %s\n", puntuation);
+                    //printf("Hey im0 %s\n", puntuation);
                     //puntuation = ", ";
                     //puntuation = strtok(puntuation, ","); //+ 1;
                     strcat(original, ","); //puntuation++);
-                    printf("Hey im1 %s\n", puntuation);
+                    //printf("Hey im1 %s\n", puntuation);
                     strcat(original, " ");
                     puntuation++;
                     //puntuation = temp;
                     //puntuation = strtok(puntuation, NULL);
-                    printf("Hey im1 4 %s\n", puntuation);
+                    //printf("Hey im1 4 %s\n", puntuation);
                     strcat(original, puntuation);
-                    printf("Hey im3 %s\n", original);
+                    //printf("Hey im3 %s\n", original);
                     //--temp;
                 }
                 else if (*(puntuation + 0) == ';') //|| strchr(temp, ';') != NULL)
                 {
-                    printf("Hey im0 %s\n", puntuation);
+                    //printf("Hey im0 %s\n", puntuation);
                     //puntuation = ", ";
                     //puntuation = strtok(puntuation, ","); //+ 1;
                     strcat(original, ";"); //puntuation++);
-                    printf("Hey im1 %s\n", puntuation);
+                    //printf("Hey im1 %s\n", puntuation);
                     strcat(original, " ");
                     puntuation++;
                     //puntuation = temp;
                     //puntuation = strtok(puntuation, NULL);
-                    printf("Hey im1 4 %s\n", puntuation);
+                    //printf("Hey im1 4 %s\n", puntuation);
                     strcat(original, puntuation);
-                    printf("Hey im3 %s\n", original);
+                    //printf("Hey im3 %s\n", original);
                 }
                 else if (strchr(puntuation, '.'))
                 {
@@ -171,23 +170,23 @@ char *loopThrough(char *main_pointer)
                     strncat(original, puntuation, trye + 1);
                     strcat(original, "  ");
                     puntuation = strchr(puntuation, '.');
-                    printf("This is punctuation strtok %s2\n", puntuation);
+                    //printf("This is punctuation strtok %s2\n", puntuation);
                     puntuation++;
-                    printf("This is punctuation strtok %s2\n", puntuation);
+                    //printf("This is punctuation strtok %s2\n", puntuation);
                     strcat(original, puntuation);
                 }
                 else
                 {
-                    printf("Jesus take the wheel\n");
+                    //printf("Jesus take the wheel\n");
                     strcat(original, temp);
-
-                    before = original;
+                    before = (char *)malloc(sizeof(char) * (strlen(temp) + 1));
+                    strcpy(before, temp);
                 }
             }
             //strcpy(puntuation, NULL);
         }
         temp = strtok(NULL, " ");
-        printf("This is temp out %s\n", temp);
+        //printf("This is temp out %s\n", temp);
         if (temp == NULL)
         {
             break;
@@ -195,11 +194,12 @@ char *loopThrough(char *main_pointer)
         else if ((*(temp + 0) != ',') && (*(temp + 0) != ';') && (*(temp + 0) != '.'))
         {
             strcat(original, " ");
-            printf("This is temp out %s\n", temp);
+            //  printf("This is temp out %s\n", temp);
         }
-        printf("This is temp outside if%s\n", temp);
-        printf("%s1\n", original);
+        //printf("This is temp outside if%s\n", temp);
+        //printf("%s1\n", original);
     }
+    //printf("%s\n", original);
     return original;
 }
 
@@ -217,19 +217,21 @@ int quantity_letters(char *pointer)
 char *changeUpper(char *cadena)
 {
     //convertir a mayuscula.
-    printf("This is cadena%s\n", cadena);
+    //printf("This is cadena%s\n", cadena);
     char *temp, letter;
-    strcpy(temp, "                          ");
+    temp = (char *)malloc(sizeof(char) * (strlen(cadena) + 42));
+    strcpy(temp, "                                        ");
     for (int i = 0; cadena[i] != '\0'; ++i)
     {
-        printf("This is cadena%c2\n", cadena[i]);
+        //printf("This is cadena%c2\n", cadena[i]);
         if (cadena[i] >= 97 && cadena[i] <= 122)
         { //minuscula a y z
-            printf("This is temp%c\n", cadena[i] - 32);
+            //printf("This is temp%c\n", cadena[i] - 32);
             letter = cadena[i] - 32;
-            printf("This is letter%c\n", letter);
+            //printf("This is letter%c\n", letter);
+            //temp = (char *)realloc(temp, sizeof(char) + 1);
             strncat(temp, &letter, 1);
-            printf("This is temp%s\n", temp);
+            //printf("This is temp%s\n", temp);
             //fputc(cadena[i] - 32, stdout);
         }
         else
@@ -237,7 +239,7 @@ char *changeUpper(char *cadena)
             //strcat(temp, cadena[i]);
             letter = cadena[i];
             strncat(temp, &letter, 1);
-            printf("This is temp%s\n", temp);
+            //printf("This is temp%s\n", temp);
         }
     }
     return temp;
@@ -245,18 +247,18 @@ char *changeUpper(char *cadena)
 
 int quantity_of_words(char *pointer)
 {
-    char *temp, *temp2;
+    char *temp, *temp2, *delimiter = " \n";
     int quantity_words = 0, quantity_letters = 0;
     quantity_letters = strlen(pointer) + 1;
     temp2 = (char *)malloc(sizeof(char) * (strlen(pointer) + 1));
     strcpy(temp2, pointer);
-    temp = strtok(temp2, " ");
+    temp = strtok(temp2, delimiter);
     ++quantity_words;
-    printf("This is temp %s and quantity %d", temp, quantity_of_words);
-    while ((temp = strtok(NULL, " ")) != NULL)
+    //printf("This is temp %s and quantity %d", temp, quantity_of_words);
+    while ((temp = strtok(NULL, delimiter)) != NULL)
     {
         ++quantity_words;
-        printf("This is temp %s and quantity %d", temp, quantity_of_words);
+        //printf("This is temp %s and quantity %d", temp, quantity_of_words);
     }
     return quantity_words;
 }
@@ -303,10 +305,11 @@ int strlen_words(char *pointer)
 
 char *highest_strlen_word(char *pointer)
 {
-    char *temp, *temp2 = "", *main_pointer, *result;
+    char *temp, *temp2, *main_pointer, *result, *delimiter = " \n";
+    strcpy(temp2, " ");
     main_pointer = (char *)malloc(sizeof(char) * (strlen(pointer) + 1));
     strcpy(main_pointer, pointer);
-    temp = strtok(main_pointer, " ");
+    temp = strtok(main_pointer, delimiter);
     while (temp)
     {
         if (strlen(temp2) < strlen(temp))
@@ -315,7 +318,7 @@ char *highest_strlen_word(char *pointer)
             temp2 = (char *)malloc(sizeof(char) * (strlen(temp) + 1));
             strcpy(temp2, temp);
         }
-        temp = strtok(NULL, " ");
+        temp = strtok(NULL, delimiter);
     }
 
     return temp2;
@@ -323,7 +326,8 @@ char *highest_strlen_word(char *pointer)
 
 char *lower_strlen_word(char *pointer)
 {
-    char *temp, *temp2 = "", *main_pointer, *result;
+    char *temp, *temp2, *main_pointer, *result;
+    strcpy(temp2, " ");
     main_pointer = (char *)malloc(sizeof(char) * (strlen(pointer) + 1));
     strcpy(main_pointer, pointer);
     temp = strtok(main_pointer, " ");
@@ -360,7 +364,7 @@ char *most_frequenty_word(char *main_pointer)
             sprintf(result_number, "%d", result_function);
             strcat(temp_return, result_number);
             max_repeat_word = result_function;
-            printf("This is the max %d\n", max_repeat_word);
+            //printf("This is the max %d\n", max_repeat_word);
         }
         temp = strtok(NULL, " ");
     }
