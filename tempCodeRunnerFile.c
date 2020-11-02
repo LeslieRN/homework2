@@ -1,1 +1,1 @@
-strchr(hey, '.')
+most_frequenty_word
