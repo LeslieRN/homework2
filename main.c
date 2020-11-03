@@ -5,10 +5,11 @@
 int main()
 {
 
-    char *file = "text.txt", *temp, *original, *highest_word, *lowest_word, *most_frequent;
-    int total_lines = 0, total_words = 0, modifications = 0;
+    char *file = "text.txt", *file_result = "result_text.txt", *temp, *original, *highest_word, *lowest_word, *most_frequent;
+    int total_lines = 0, total_words = 0;
+    modifications = 0;
 
-    int var = quantity_of_students(file);
+    int var_letters = quantity_of_characters(file);
     temp = show_file_data(file);
     original = loopThrough(temp);
     printf("%s\n", original);
@@ -28,5 +29,8 @@ int main()
     most_frequent = most_frequent_word(original);
     printf("This is the most frequent word: %s\n", most_frequent);
 
+    printf("Quantity of modifications %d\n", modifications);
+
+    insert_data(file_result, original);
     return 0;
 }
